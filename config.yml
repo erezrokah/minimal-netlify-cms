@@ -1,0 +1,40 @@
+backend:
+  name: git-gateway
+
+local_backend: true
+
+media_folder: "site/static/media"
+public_folder: "/media"
+
+slug:
+  clean_accents: true
+  encoding: "ascii"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+
+    folder: "site/content/posts"
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+
+    create: true
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Image gallery"
+        label_singular: "Image"
+        name: "gallery"
+        widget: "list"
+        field:
+          label: "Image"
+          name: img
+          widget: "image"
+          allow_multiple: false
+
+      - label: "Text"
+        name: "body"
+        widget: "markdown"
